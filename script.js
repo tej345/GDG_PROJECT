@@ -114,21 +114,6 @@ function deleteTask(id){
     renderTasks();
 }
 
-const quotes = [
-    {
-        text:"Push yourself, because no one else is going to do it for you.",
-        image: "https://images.unsplash.com/photo-1551892589-865f69869476?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-    },
-    {
-        text:"Success doesn't come from what you do occasionally.It comes from what you do consistently.",
-        image: "https://images.unsplash.com/photo-1517976547714-720226b864c1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-    },
-    {
-        text: "Don't limit your challenges. Challenge your limits.",
-        image: "https://images.unsplash.com/photo-1521804906057-1df8fdb718b7?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-    }
-];
-
 //event listeners go here
 
 document.getElementById("task-input").addEventListener("keydown",function(event) {
