@@ -77,3 +77,10 @@ function renderTasks(){
                 list.appendChild(item);
     });
 }
+
+function editTask(id){
+    const taskElement = document.querySelector(`[data-id="${id}"]`);
+    if(taskElement){
+        openEditModal(taskElement);
+    }
+}
