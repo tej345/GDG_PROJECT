@@ -12,6 +12,22 @@ function submitName(){
     }
 }
 
+function changeName(){
+    localStorage.removeItem('username');
+    document.getElementById("name-input").value = "";
+    user = null;
+    getUsername();
+}
+
+function getUsername(){
+    if(!user){
+        document.getElementById("name-modal").classList.remove("hidden");
+        setTimeout(() => document.getElementById("name-input").focus(),100);
+    } else {
+        renderGreeting();
+    }
+}
+
 function renderGreeting(){
     document.getElementById('greeting').textContent = `Hi ${user}, let's crush your tasks!`;
 }
