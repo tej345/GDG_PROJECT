@@ -84,3 +84,32 @@ function editTask(id){
         openEditModal(taskElement);
     }
 }
+
+let taskBeingEdited = null;
+
+function openEditModal(taskElement){
+    document.getElementById("edit-input").value = "";
+    document.getElementById("edit-modal").classList.remove("hidden");
+    taskBeingEdited = taskElement;
+    setTimeout(() => document.getElementById("edit-input").focus(), 100);
+}
+
+function submitEdit(){
+    const newText = document.getElementById("edit-input").value.trim();
+    if(newText && taskBeingEdited){
+        const id = parseInt(taskBeingEdited.getAttribute("data-id"));
+        const task = tasks.find(t => t.id === id);
+        if(task){
+            task.text = newText;
+            saveTasks();
+        }
+        taskBeingEdited.querySelector("span").innerText = newText;
+        taskBeingEdited = null;
+        document.getElementById("edit-modal").classList.add("hidden");
+    }
+}
+function deleteTask(id){
+    tasks = tasks.filter(task => task.id !== id);
+    saveTasks();
+    renderTasks();
+}
