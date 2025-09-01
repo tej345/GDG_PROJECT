@@ -31,3 +31,20 @@ function getUsername(){
 function renderGreeting(){
     document.getElementById('greeting').textContent = `Hi ${user}, let's crush your tasks!`;
 }
+
+function addTask(text) {
+    if(text.trim() === "")return;
+    const task = {
+        id: Date.now(),
+        text: text,
+        completed: false
+    };
+    tasks.push(task);
+    saveTasks();
+    renderTasks();
+    document.getElementById("task-input").value = "";
+}
+
+function saveTasks(){
+    localStorage.setItem("tasks",JSON.stringify(tasks));
+}
