@@ -1,51 +1,35 @@
 <!DOCTYPE html>
-<html lang = "en">
-    <head>
-        <meta charset = "UTF-8"/>
-        <meta name = "viewport" content = "width=device-width, initial-scale = 1.0" />
-        <title> To-Do List</title>
-        <script src = "https://cdn.tailwindcss.com"></script>
-        <script src = "script.js" defer></script>            
-    </head>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome Page</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="navbar">
+    <div class="logo">⧉</div>
+    <nav class="nav-links">
+      <a href="#">Theme</a>
+      <button class="btn">Register</button>
+    </nav>
+  </header>
 
-     <div id="name-modal">
-        <div class="modal-content">
-            <h2>Welcome !</h2>
-            <p>Enter your name:</p>
-            <input id="name-input" type="text"/>
-            <button id="name-submit-btn">Submit</button>
-        </div>
-    </div>
+  <!-- Main content -->
+  <main class="main">
+    <h1>Welcome</h1>
+    <form class="task-form">
+      <input type="text" placeholder="Enter a task">
+      <button type="submit" class="btn">Submit</button>
+    </form>
+  </main>
 
-    <div id="edit-modal">
-        <div class="modal-content">
-            <h2>Edit Task</h2>
-            <input id="edit-input" type="text"/>
-            <button id="edit-submit-btn">Submit</button>
-        </div>
-    </div>
-
-    <div id="main-container">
-
-        <div>
-            <h1 id="greeting"></h1>
-            <button id="change-name-btn">Change Name</button>
-        </div>
-
-        <div id="task-input-container">
-            <input id="task-input" type="text" placeholder="Enter a new task."/>
-            <button id="add-task-btn">Add</button>
-        </div>
-
-        <div id="task-list"></div>
-
-        <div id="quote-container">
-            <img id="quote-img" src="" alt="Motivational"/>
-            <p id="quote"></p>    
-        </div>
-    </div>
-
-    <button id="theme-toggle"> Dark Mode </button>
-    
+  <!-- Footer -->
+  <footer class="footer">
+    <a href="#"><img src="x-icon.svg" alt="Twitter"></a>
+    <a href="#"><img src="instagram-icon.svg" alt="Instagram"></a>
+    <a href="#"><img src="linkedin-icon.svg" alt="LinkedIn"></a>
+  </footer>
 </body>
 </html>
