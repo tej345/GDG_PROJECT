@@ -1,0 +1,95 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins",sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: space-between;
+  background: white;
+  color: #333;
+  background: radial-gradient(circle, rgba(155,89,182,0.2) 0%, rgba(155,89,182,0.4) 10%, transparent 40%);
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.logo {
+  font-size: 1.2rem;
+  padding: 1rem 0.5rem;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+/* Reusable button */
+.btn {
+  background: #6b3fa0; /* purple shade */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #592f88;
+}
+
+/* Main */
+.main {
+  text-align: center;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.main h1 {
+  font-size: 4.3rem;
+  font-weight: 400;
+  margin-bottom: 0rem;
+}
+
+.task-form {
+  display: flex;
+  gap: 1rem;
+}
+
+.task-form input {
+  padding: 0rem 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  width: 200px;
+}
+
+/* Footer */
+.footer {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 2rem;
+}
+.footer img {
+  width: 20px;
+  height: 20px;
+}
