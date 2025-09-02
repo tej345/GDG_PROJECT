@@ -6,7 +6,7 @@
   <title>Welcome Page</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <link rel="icon" href="assets/icon/github-mark.svg" sizes="32x32" type="image/svg">
+  <link rel="icon" href="assets/icon/github-mark.svg" sizes="32x32" type="image/svg+xml">
   <link rel="icon" href="assets/icon/instagram.png" sizes="32x32" type="image/png">
   <link rel="icon" href="assets/icon/linkedin.png" sizes="32x32" type="image/png">
 </head>
@@ -16,22 +16,21 @@
     <div class="logo">goliath</div>
     <nav class="nav-links">
       <a href="#">Theme</a>
-      <button id="registerBtn">Register</button>
-
-      <!--Name Modal-->
-      <div id="name-modal"class="hidden">
-        <div class="card">
-            <h2>Enter Your Name</h2>
-            <input type="text" id="name-input" placeholder="Your Name">
-            <button id="submitNameBtn">Submit</button>
-        </div>
-      </div>
+      <button id="registerBtn" class="btn">Register</button>
     </nav>
-  </header>
+   </header>
+
+    <!--Name Modal-->
+    <div id="name-modal"class="hidden">
+        <div class="card">
+            <input type="text" id="name-input" placeholder="Your Name">
+            <button id="submitNameBtn" class="btn">Submit</button>
+        </div>
+    </div>
 
   <!-- Main content -->
   <main class="main">
-    <h1 id="greeting">Welcome</h1>
+    <h1 id="greeting">Welcome!</h1>
     <div class="task-form">
       <input type="text" id="task-input" placeholder="Enter a task">
       <button type="submit" class="btn">Submit</button>
