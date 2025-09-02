@@ -6,6 +6,8 @@ let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 // element references
 
 const dom={
+    register:document.getElementById("registerBtn"),
+    submitNameBtn:document.getElementById("submitNameBtn"),
     nameInput:document.getElementById("name-input"),
     nameModal:document.getElementById("name-modal"),
     nameGreeting:document.getElementById("greeting"),
@@ -139,6 +141,10 @@ function addEventListenersToTasks(){
     });
 }
 // event listeners go here
+
+dom.register.addEventListener("click",showNameModal);
+
+dom.submitNameBtn.addEventListener("click",handleNameSubmission);
 
 dom.taskInput.addEventListener("keydown",(event)=> {
     if(event.key==="Enter"){

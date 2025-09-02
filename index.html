@@ -6,9 +6,9 @@
   <title>Welcome Page</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <link rel=""icon href="assets/icon/github-mark.svg" sizes="32x32" type="image/svg">
-  <link rel=""icon href="assets/icon/instagram.png" sizes="32x32" type="image/png">
-  <link rel=""icon href="assets/icon/linkedin.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="assets/icon/github-mark.svg" sizes="32x32" type="image/svg">
+  <link rel="icon" href="assets/icon/instagram.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="assets/icon/linkedin.png" sizes="32x32" type="image/png">
 </head>
 <body>
   <!-- Header -->
@@ -16,17 +16,27 @@
     <div class="logo">goliath</div>
     <nav class="nav-links">
       <a href="#">Theme</a>
-      <button class="btn">Register</button>
+      <button id="registerBtn">Register</button>
+
+      <!--Name Modal-->
+      <div id="name-modal"class="hidden">
+        <div class="card">
+            <h2>Enter Your Name</h2>
+            <input type="text" id="name-input" placeholder="Your Name">
+            <button id="submitNameBtn">Submit</button>
+        </div>
+      </div>
     </nav>
   </header>
 
   <!-- Main content -->
   <main class="main">
-    <h1>Welcome</h1>
-    <form class="task-form">
-      <input type="text" placeholder="Enter a task">
+    <h1 id="greeting">Welcome</h1>
+    <div class="task-form">
+      <input type="text" id="task-input" placeholder="Enter a task">
       <button type="submit" class="btn">Submit</button>
-    </form>
+    </div>
+    <div id="task-list"></div>
   </main>
 
   <!-- Footer -->
@@ -35,5 +45,7 @@
     <a href="https://www.instagram.com/tejgandhi_?utm_source=qr&igsh=MWJ1YWt1ZGI4bGVrNQ=="><img src="assets/icons/instagram.png" alt="Instagram"></a>
     <a href="https://linkedin.com/in/tejg345/"><img src="assets/icons/linkedin.png" alt="LinkedIn"></a>
   </footer>
+
+  <script src="script.js" defer></script>
 </body>
 </html>
