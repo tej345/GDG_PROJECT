@@ -13,7 +13,8 @@ const dom={
     taskList:document.getElementById("task-list"),
     editInput:document.getElementById("edit-input"),
     editModal:document.getElementById("edit-modal"),
-    changenameBtn: document.getElementById("change-name-btn"),
+    changenameBtn:document.getElementById("change-name-btn"),
+    themeToggle:document.getElementById("theme-toggle"),
 };
 
 let taskBeingEdited=null;
@@ -145,7 +146,7 @@ dom.taskInput.addEventListener("keydown",(event)=> {
     }
 });
 
-dom.nameInput.addEventListener("keydown",(Event)=>{
+dom.nameInput.addEventListener("keydown",(event)=>{
     if(event.key==="Enter"){
         handleNameSubmission();
     }
@@ -167,5 +168,23 @@ document.addEventListener("DOMContentLoaded",()=>{
         renderTasks();
     }else{
         showNameModal();
+    }
+
+    if(localStorage.getItem("theme")==="dark"){
+        document.documentElement.classList.add("dark");
+    }else{
+        document.documentElement.classList.remove("dark");
+    }
+});
+
+
+dom.themeToggle.addEventListener("click",()=>{
+    document.documentElement.classList.toggle("dark");
+    if(document.documentElement.classList.contains("dark")){
+        localStorage.setItem("theme","dark");
+        themeToggle.textContent="Light Mode"
+    }else{
+        localStorage.setItem("theme","light");
+        themeToggle.textContent="Dark Mode";
     }
 });
