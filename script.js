@@ -1,39 +1,51 @@
+// global states
+
 let user = localStorage.getItem('username');
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
-function submitName(){
-    const input = document.getElementById("name-input");
-    const name = input.value.trim();
+// element references
+
+const dom={
+    nameInput:document.getElementById("name-input"),
+    nameModal:document.getElementById("name-modal"),
+    nameGreeting:document.getElementById("greeting"),
+    taskInput:document.getElementById("task-input"),
+    taskList:document.getElementById("task-list"),
+    editInput:document.getElementById("edit-input"),
+    editModal:document.getElementById("edit-modal"),
+    changenameBtn: document.getElementById("change-name-btn"),
+};
+
+let taskBeingEdited=null;
+
+function handleNameSubmission(){
+    const name = dom.nameInput.value.trim();
     if(name){
         user = name;
         localStorage.setItem('username',user);
-        document.getElementById("name-modal").classList.add("hidden");
-        renderGreeting();
+        dom.nameModal.classList.add("hidden");
+        updateGreeting();
     }
 }
 
-function changeName(){
+function updateGreeting(){
+    dom.nameGreeting.textContent = `Hello, ${user}`;
+}
+
+function showNameModal(){
+    dom.nameModal.classList.remove("hidden");
+    setTimeout(() => dom.nameInput.focus(),100);
+}
+function handleChangeName(){
     localStorage.removeItem('username');
-    document.getElementById("name-input").value = "";
+    dom.nameInput.value = "";
     user = null;
-    getUsername();
-}
-
-function getUsername(){
-    if(!user){
-        document.getElementById("name-modal").classList.remove("hidden");
-        setTimeout(() => document.getElementById("name-input").focus(),100);
-    } else {
-        renderGreeting();
-    }
-}
-
-function renderGreeting(){
-    document.getElementById('greeting').textContent = `Hi ${user}, let's crush your tasks!`;
+    showNameModal();
 }
 
 function addTask(text) {
     if(text.trim() === "")return;
+
     const task = {
         id: Date.now(),
         text: text,
@@ -42,7 +54,7 @@ function addTask(text) {
     tasks.push(task);
     saveTasks();
     renderTasks();
-    document.getElementById("task-input").value = "";
+    dom.taskInput.value = "";
 }
 
 function saveTasks(){
@@ -50,100 +62,110 @@ function saveTasks(){
 }
 
 function renderTasks(){
-    const list = document.getElementById("task-list");
-    list.innerHTML = "";
+    dom.taskList.innerHTML = "";
 
     if(tasks.length === 0){
-        list.innerHTML = `<p class="text-gray-500 text-center mt-4">No tasks yet. Add one!</p>`;
+        dom.taskList.innerHTML = `<p class="text-gray-500 text-center mt-4">No tasks yet. Add one!</p>`;
         return;
     }
 
     tasks.forEach(task => {
-        const item = document.createElement("div");
-        item.className = "flex items-center justify-between bg-white p-3 rounded-lg shadow mb-2 transition-all";
-        item.setAttribute("data-id", task.id);
-        item.innerHTML = `
-            <div class="flex items-center">
-              <label class="flex items-center cursor-pointer space-x-2">
-                <input type="checkbox" class="peer hidden" onchange="toggleTaskComplete(${task.id})" ${task.completed ? "checked" : ""} />
+        const taskItem = document.createElement("div");
+        taskItem.className = "flex items-center justify-between bg-white p-3 rounded-lg shadow mb-2 transition-all";
+        taskItem.dataset.id=task.id;
 
-                <div onclick="deleteTask(${task.id})" 
-                     class="w-5 h-5 rounded-full border-2 border-purple-500 hover:bg-purple-500 hover:border-purple-500 transition-all"></div>
-                <span class="${task.completed ? "line-through text-gray-500" : ""}">${task.text}</span>
-              </label>
-            </div>
+        const taskTextClass=task.completed?"line-through text-gray-500":"";
+        taskItem.innerHTML = `
+            <label class="flex items-center space-x-2">
+                <input type="checkbox" class="task-checkbox peer hidden" data-id="${task.id}" ${task.completed ? "checked" : ""} />
+                <div class="w-5 h-5 rounded-full border-2 border-purple-500 transition-all cursor-pointer peer-checked:bg-purple-500 peer-checked:border-purple-500 hover:bg-purple-200 hover:border-purple-600"></div>
+                <span class="${taskTextClass}">${task.text}</span>
+            </label>
             <div class="space-x-2">
-                <button onclick="editTask(${task.id})" class="text-blue-500 hover:underline">Edit</button>
+                <button class="edit-btn text-blue-500 hover:underline" data-id="${task.id}">Edit</button>
             </div>
         `;
-        list.appendChild(item);
+        dom.taskList.appendChild(taskItem);
     });
+    addEventListenersToTasks();
 }
 
-function editTask(id){
-    const taskElement = document.querySelector(`[data-id="${id}"]`);
-    if(taskElement){
-        openEditModal(taskElement);
-    }
+function handleTaskDeletion(id) {
+    tasks = tasks.filter(task => task.id !== id);
+        saveTasks();
+        renderTasks();
 }
-
-let taskBeingEdited = null;
 
 function openEditModal(taskElement){
-    document.getElementById("edit-input").value = "";
-    document.getElementById("edit-modal").classList.remove("hidden");
+    dom.editInput.value = "";
+    dom.editModal.classList.remove("hidden");
     taskBeingEdited = taskElement;
-    setTimeout(() => document.getElementById("edit-input").focus(), 100);
+    setTimeout(() => dom.editInput.focus(), 100);
 }
 
-function submitEdit(){
-    const newText = document.getElementById("edit-input").value.trim();
+function handleEditSubmission(){
+    const newText = dom.editInput.value.trim();
     if(newText && taskBeingEdited){
-        const id = parseInt(taskBeingEdited.getAttribute("data-id"));
+        const id = parseInt(taskBeingEdited.dataset.id);
         const task = tasks.find(t => t.id === id);
         if(task){
             task.text = newText;
             saveTasks();
+            renderTasks();
         }
-        taskBeingEdited.querySelector("span").innerText = newText;
         taskBeingEdited = null;
-        document.getElementById("edit-modal").classList.add("hidden");
+        dom.editModal.classList.add("hidden");
     }
 }
-function deleteTask(id){
-    tasks = tasks.filter(task => task.id !== id);
-    saveTasks();
-    renderTasks();
+
+//initializes the event listeners
+function addEventListenersToTasks(){
+    dom.taskList.querySelectorAll(".edit-btn").forEach(button=>{
+        button.addEventListener("click",(event)=>{
+            const taskId=parseInt(event.target.dataset.id);
+            const taskElement=document.querySelector(`[data-id="${taskId}"]`);
+            if(taskElement){
+                openEditModal(taskElement);
+            }
+        });
+    });
+
+    dom.taskList.querySelectorAll(".task-checkbox").forEach(checkbox=>{
+        checkbox.addEventListener("change",(event)=>{
+            const taskId=parseInt(event.target.dataset.id);
+            handleTaskDeletion(taskId);
+        });
+    });
 }
+// event listeners go here
 
-//event listeners go here
-
-document.getElementById("task-input").addEventListener("keydown",function(event) {
-    if (event.key == "Enter"){
-        addTask(this.value);
+dom.taskInput.addEventListener("keydown",(event)=> {
+    if(event.key==="Enter"){
+        addTask(dom.taskInput.value);
     }
 });
 
-document.addEventListener("DOMContentLoaded",() => {
-    const nameInput = document.getElementById("name-input");
-    const editInput = document.getElementById("edit-input");
+dom.nameInput.addEventListener("keydown",(Event)=>{
+    if(event.key==="Enter"){
+        handleNameSubmission();
+    }
+});
 
-    nameInput.addEventListener("keydown",function(event){
-        if(event.key === "Enter"){
-            submitName();
-        }
-    });
+dom.editInput.addEventListener("keydown",(event)=>{
+    if(event.key==="Enter"){
+        handleEditSubmission();
+    }
+});
 
-    editInput.addEventListener("keydown",function(event){
-        if(event.key === "Enter"){
-            submitEdit();
-        }
-    });
+dom.changenameBtn?.addEventListener("click",handleChangeName);
 
-    const storedName = localStorage.getItem("username");
+document.addEventListener("DOMContentLoaded",()=>{
+    const storedName=localStorage.getItem("username");
     if(storedName){
-        document.getElementById("greeting").textContent = `Hello, ${storedName}`;
-    }else {
-        document.getElementById("name-modal").classList.remove("hidden");
+        user=storedName;
+        updateGreeting();
+        renderTasks();
+    }else{
+        showNameModal();
     }
 });
