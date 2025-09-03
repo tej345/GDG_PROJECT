@@ -35,8 +35,7 @@
     border-radius: 5%;
   }
   .pomodoro-controls {
-    flex-direction: column;
+    flex-wrap:wrap;
     gap: 0.5rem;
-    align-items: flex-end;
   }
 }

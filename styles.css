@@ -282,6 +282,10 @@ input:checked + .slider::before {
   .main h1 {
     font-size: 3rem;
   }
+  .logo{
+    font-size:1rem;
+    padding:0.5rem 0;
+  }
   .task-form {
     flex-direction: column;
     gap: 0.5rem;
@@ -296,18 +300,20 @@ input:checked + .slider::before {
     width: 95%;
   }
   .navbar {
-    flex-direction: column;
+    flex-wrap: wrap;
     gap: 0.5rem;
-    padding:0,5rem 1rem;
-    align-items:flex-end;
+    padding:0.5rem 1rem;
   }
   .nav-links {
-    flex-direction: column;
+    display:flex;
+    flex-wrap: wrap;
+    flex:1;
+    justify-content:space-around;
     gap: 0.5rem;
-    align-items: flex-end;
   }
   .nav-links a{
     font-size:0.9rem;
+    white-space:nowrap;
   }
   #name-modal .card,
   #edit-modal .card {
