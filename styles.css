@@ -186,7 +186,7 @@ input:checked + .slider::before {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    border: 2px solid #ccc;
+    border: 1px solid #0b0000;
     appearance: none;
     cursor: pointer;
     position: relative;
@@ -195,8 +195,7 @@ input:checked + .slider::before {
 }
 
 .task-checkbox:hover {
-    border-color: #7c3aed;
-    background-color:#7c3aed;  
+    background-color:#5d3d7c;  
 }
 
 .task-checkbox:checked {
@@ -290,6 +289,11 @@ input:checked + .slider::before {
     background: radial-gradient(circle, rgba(40,0,60,0.8) 5%, rgba(60,20,90,0.9) 45%, #1a0a2e 100%);
     color: #eee;
 }
+
+.dark .nav-links a{
+    color: #eee;
+}
+
 
 .dark .task-item,
 .dark #task-card .card,
