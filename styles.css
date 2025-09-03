@@ -175,7 +175,7 @@ input:checked + .slider::before {
     align-items: center;
     justify-content: space-between;
     padding: 15px; 
-    background: radial-gradient(circle at center, rgba(58, 17, 77, 0.2) 60%, rgba(170, 123, 189, 0.4)60% );
+    background: radial-gradient(circle, rgba(58, 17, 77, 0.2) 40%, rgba(170, 123, 189, 0.4)80% );
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.15);
     margin-bottom: 10px;  
@@ -298,10 +298,16 @@ input:checked + .slider::before {
   .navbar {
     flex-direction: column;
     gap: 0.5rem;
+    padding:0,5rem 1rem;
+    align-items:flex-end;
   }
   .nav-links {
     flex-direction: column;
     gap: 0.5rem;
+    align-items: flex-end;
+  }
+  .nav-links a{
+    font-size:0.9rem;
   }
   #name-modal .card,
   #edit-modal .card {

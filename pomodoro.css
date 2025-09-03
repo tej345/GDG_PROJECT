@@ -37,6 +37,6 @@
   .pomodoro-controls {
     flex-direction: column;
     gap: 0.5rem;
-    align-items: center;
+    align-items: flex-end;
   }
 }
