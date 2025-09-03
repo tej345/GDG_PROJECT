@@ -13,17 +13,30 @@
   box-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
   transition: all 0.3s ease;
 }
-
 .dark .timer-circle {
   border-color: #bb86fc;
   color: #bb86fc;
   box-shadow: 0 0 25px rgba(187, 134, 252, 0.4);
 }
-
 .pomodoro-controls {
   display: flex;
   gap: 1rem;
   justify-content: center;
   margin-top: 15px;
 }
-
+/* MOBILE RESPONSIVE */
+@media (max-width: 600px) {
+  .timer-circle {
+    width: 90%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    font-size: 6rem;
+    margin: 10px auto;
+    border-radius: 5%;
+  }
+  .pomodoro-controls {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+  }
+}

@@ -58,29 +58,6 @@ document.addEventListener("DOMContentLoaded", () => {
         Notification.requestPermission();
     }
 });
-
-document.addEventListener("DOMContentLoaded", () => {
-    
-    if(localStorage.getItem("theme") === "dark") {
-        document.body.classList.add("dark-mode");
-    } else {
-        document.body.classList.remove("dark-mode");
-    }
-
-    const toggle = document.getElementById("theme-toggle");
-    if(toggle) {
-        toggle.addEventListener("click", () => {
-            document.body.classList.toggle("dark-mode");
-            if(document.body.classList.contains("dark-mode")) {
-                localStorage.setItem("theme", "dark");
-            } else {
-                localStorage.setItem("theme", "light");
-            }
-        });
-    }
-});
-
-
 startBtn.addEventListener("click", startTimer);
 pauseBtn.addEventListener("click", pauseTimer);
 resetBtn.addEventListener("click", resetTimer);
