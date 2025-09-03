@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins",sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
@@ -12,7 +12,7 @@ body {
   justify-content: space-between;
   background: white;
   color: #333;
-  background: radial-gradient(circle, rgba(155,89,182,0.2) 0%, rgba(155,89,182,0.4) 10%, transparent 40%);
+  background: radial-gradient(circle, rgba(77, 14, 104, 0.2) 5%, rgba(97, 51, 116, 0.4) 45%, transparent 100%);
 }
 
 /* Navbar */
@@ -66,7 +66,7 @@ body {
 }
 
 #name-modal .card {
-    width: 200px;       /* optional */
+    width: 200px;
     padding: 1rem;
     background: white;
     border-radius: 8px;
@@ -83,6 +83,116 @@ body {
     right: 0;            
     margin-top: 0.5rem;  
     z-index: 100;
+}
+
+#edit-modal input {
+    width: 100%;
+    padding: 0.4rem 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+#edit-modal .card {
+    width: 200px;       
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+
+    display: flex;  
+    flex-direction: column; 
+    gap: 0.5rem; 
+}
+
+#edit-modal {
+    position: absolute;            
+    margin-top: 0.5rem;  
+    z-index: 100;
+}
+
+#task-list {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+}
+
+
+#task-card {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+#task-card .card {
+  width: 100%;
+  background: #fff;
+  padding: 5px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.task-checkbox {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    appearance: none;
+    cursor: pointer;
+    position: relative;
+    outline: none;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.task-checkbox:hover {
+    border-color: #7c3aed;       /* purple border on hover */
+    background-color:#7c3aed;   /* light purple background */
+}
+
+.task-checkbox:checked {
+    background-color: #7c3aed; 
+    border-color: #7c3aed;
+}
+
+.task-checkbox:checked::after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 8px;
+    height: 8px;
+    background: white;
+    border-radius: 50%;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px; 
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    margin-bottom: 10px;  
+    min-height: 60px;
+    width:500px;
+}
+
+.edit-btn {
+    background: #6b3fa0;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.edit-btn:hover {
+    background: #592f88;
 }
 
 /* Main */
@@ -107,11 +217,13 @@ body {
 }
 
 .task-form input {
+  left:0px;
   padding: 0rem 0.5rem;
   border: 1px solid #ccc;
   border-radius: 5px;
   outline: none;
   width: 200px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
 /* Footer */

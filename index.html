@@ -6,9 +6,10 @@
   <title>Welcome Page</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <link rel="icon" href="assets/icon/github-mark.svg" sizes="32x32" type="image/svg+xml">
-  <link rel="icon" href="assets/icon/instagram.png" sizes="32x32" type="image/png">
-  <link rel="icon" href="assets/icon/linkedin.png" sizes="32x32" type="image/png">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.3/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="icon" href="assets/icons/github-mark.svg" sizes="32x32" type="image/svg+xml">
+  <link rel="icon" href="assets/icons/instagram.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="assets/icons/linkedin.png" sizes="32x32" type="image/png">
 </head>
 <body>
   <!-- Header -->
@@ -33,10 +34,21 @@
     <h1 id="greeting">Welcome!</h1>
     <div class="task-form">
       <input type="text" id="task-input" placeholder="Enter a task">
-      <button type="submit" class="btn">Submit</button>
+      <button id="submitTaskBtn" class="btn">Submit</button>
     </div>
-    <div id="task-list"></div>
+    <div id="task-card" class="hidden">
+        <div class="card">
+            <div id="task-list"></div>
+        </div>
+    </div>
   </main>
+  <!--Edit Modal-->
+    <div id="edit-modal"class="hidden">
+        <div class="card">
+            <input type="text" id="edit-input" placeholder="Edit Tasks">
+            <button id="submitEditBtn" class="btn">Submit</button>
+        </div>
+    </div>
 
   <!-- Footer -->
   <footer class="footer">
