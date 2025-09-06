@@ -1,2 +1,2 @@
 # GDG_PROJECT
-A simple clean to do webpage built for GDG Recruitments 2025.
+An enhanced version of the To-Do List Webpage with elegant design, dark mode toggle and a pomodoro timer.
